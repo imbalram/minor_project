@@ -5,13 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-<div class="popup" id="popup-1">
-  <div class="overlay"></div>
-  <div class="content">
-    <div class="close-btn" onclick="togglePopup()">&times;</div>
-    <h1>{{ prediction_text }}</h1>
 
-  </div>
 </div>
 </head>
 
@@ -41,7 +35,13 @@
             <br><br><button id="sub" type="submit " onclick="togglepopup()"> Price</button>
             <br>
 
+            <div class="popup" id="popup-1">
+  <div class="overlay"></div>
+  <div class="content">
+    <div class="close-btn" onclick="togglePopup()">&times;</div>
+    <h3>{{ prediction_text }}</h3>
 
+  </div>
 
 
         </form>
