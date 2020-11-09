@@ -30,7 +30,7 @@
                 <option value="Mannual">Manual Car</option>
                 <option value="Automatic">Automatic Car</option>
             </select>
-            <br><br><button  id="sub" type="submit ">Calculate the Selling Price</button>
+            <br><br><button  id="sub" type="submit " onClick="showMessage()">Calculate the Selling Price</button>
             <br>
 
 
@@ -39,7 +39,7 @@
         </form>
 
 
-            <br><br><h3>{{ prediction_text }}<h3>
+            <br><br><h3><h3>
        
     </div>
 
@@ -155,6 +155,11 @@
             text-align: center;
         }
     </style>
+        <script type="text/javascript">
+            function showMessage()
+            {
+                alert("{{ prediction_text }}");
+            }
 </body>
 
 </html>
