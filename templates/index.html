@@ -9,10 +9,10 @@
 
 <body>
 
-    <div style="color:blue">
+    <div style="color:black">
         <form action="{{ url_for('predict')}}" method="post">
-            <h2><marquee behavior="alternate">Predictive analysis</marquee></h2>
-            <h3>Year</h3>
+            <h2><marquee behavior="alternate" scrollamount="10">Predictive analysis</marquee></h2>
+            <h3>In which year you had buy this car ?</h3>
             <input id="first" name="Year" type="number ">
             <h3>What is the Showroom Price?(In lakhs)</h3><br><input id="second" name="Present_Price" required="required">
             <h3>How Many Kilometers Drived?</h3><input id="third" name="Kms_Driven" required="required">
