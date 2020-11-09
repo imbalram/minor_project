@@ -31,72 +31,82 @@
                 <option value="Automatic">Automatic Car</option>
             </select>
             <br><br>
-<div class="popup" id="popup-1">
-  <div class="overlay"></div>
-  <div class="content">
-    <div class="close-btn" onclick="togglePopup()">&times;</div>
-    <h1>{{prediction_text}}</h1>
-     </div>
-</div>
-window.alert("{{prediction_text}}")
-<button onclick="togglePopup()">Calculate the price</button>
+  <button data-modal-target="#modal">Calculate the price</button>
+  <div class="modal" id="modal">
+    <div class="modal-header">
+    <button data-close-button class="close-button">&times;</button>
+    </div>
+    <div class="modal-body">
+     {{prediction_text}}
+    </div>
+  </div>
+  <div id="overlay"></div>
 <style>
 /* Popup container - can be anything you want */
-.popup .overlay {
-  position:fixed;
-  display:flex;
-  top:0px;
-  left:0px;
-  width:100vw;
-  height:100vh;
-  background:rgba(0,0,0,0.7);
-  z-index:1;
-  display:none;
-  
+*, *::after, *::before {
+  box-sizing: border-box;
 }
 
-.popup .content {
-  position:absolute;
-  top:50%;
-  display:flex;  
-  left:50%;
-  transform:translate(-50%,-50%) scale(0);
-  background:#fff;
-  width:500px;
-  height:250px;
-  z-index:2;
-  text-align:center;
-  padding:20px;
-  box-sizing:border-box;
-  font-family:"Open Sans",sans-serif;
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 200ms ease-in-out;
+  border: 1px solid black;
+  border-radius: 10px;
+  z-index: 10;
+  background-color: white;
+  width: 500px;
+  max-width: 80%;
 }
 
-.popup .close-btn {
-  cursor:pointer;
-  position:absolute;
-  right:20px;
-  top:20px;
-  width:30px;
-  height:30px;
-  background:#222;
-  color:#fff;
-  font-size:25px;
-  font-weight:600;
-  line-height:30px;
-  text-align:center;
-  border-radius:50%;
+.modal.active {
+  transform: translate(-50%, -50%) scale(1);
 }
 
-.popup.active .overlay {
- display:flex;
-    
+.modal-header {
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
 }
 
-.popup.active .content {
- 
-  transform:translate(-50%,-50%) scale(1);
+.modal-header .title {
+  font-size: 1.25rem;
+  font-weight: bold;
 }
 
+.modal-header .close-button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.modal-body {
+  padding: 10px 15px;
+}
+
+#overlay {
+  position: fixed;
+  opacity: 0;
+  transition: 200ms ease-in-out;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, .5);
+  pointer-events: none;
+}
+
+#overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
 
 </style>
 </head>
@@ -104,21 +114,9 @@ window.alert("{{prediction_text}}")
 
 
 
-<script>
-// When the user clicks on div, open the popup
-function togglePopup(){
-  document.getElementById("popup-1").classList.toggle("active");
-}
-</script>
-         
-         
-  
 
-  
-
-
-        </form>
-        
+ </form>
+    
 
 
 
@@ -236,8 +234,41 @@ function togglePopup(){
 
 <script>
 // When the user clicks on div, open the popup
-function togglePopup(){
-  document.getElementById("popup-1").classList.toggle("active");
+const openModalButtons = document.querySelectorAll('[data-modal-target]')
+const closeModalButtons = document.querySelectorAll('[data-close-button]')
+const overlay = document.getElementById('overlay')
+
+openModalButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const modal = document.querySelector(button.dataset.modalTarget)
+    openModal(modal)
+  })
+})
+
+overlay.addEventListener('click', () => {
+  const modals = document.querySelectorAll('.modal.active')
+  modals.forEach(modal => {
+    closeModal(modal)
+  })
+})
+
+closeModalButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const modal = button.closest('.modal')
+    closeModal(modal)
+  })
+})
+
+function openModal(modal) {
+  if (modal == null) return
+  modal.classList.add('active')
+  overlay.classList.add('active')
+}
+
+function closeModal(modal) {
+  if (modal == null) return
+  modal.classList.remove('active')
+  overlay.classList.remove('active')
 }
 </script>
 </body>
