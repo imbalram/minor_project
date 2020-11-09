@@ -34,7 +34,7 @@
             <div class="popup" id="popup-1">
             <div class="overlay"></div>
             <div class="content">
-            <div  onclick="togglePopup()">&times;</div>
+            <div class="close-btn" onclick="togglePopup()">&times;</div>
             <h1> Prediction using car dekho data</h1>
                 <p>{{ prediction_text }}</p>
             </div>
@@ -208,7 +208,7 @@
 }
 
 .popup.active .overlay {
-  display:block;
+  
 }
 
 .popup.active .content {
