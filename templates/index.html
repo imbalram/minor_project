@@ -30,7 +30,7 @@
                 <option value="Mannual">Manual Car</option>
                 <option value="Automatic">Automatic Car</option>
             </select>
-            <br><br><button id="sub" type="submit " value="{{ prediction_text }}">Calculate the Selling Price</button>
+            <br><br><button type="submit " value="{{ prediction_text }}">Calculate the Selling Price</button>
             <br>
 
 
@@ -51,6 +51,20 @@
             background-color: pink;
             text-align: center;
             padding: 0px;
+        }
+        button {
+  position:absolute;
+  
+  transform:translate(-50%,-50%);
+  width=100px
+  padding:1px;
+  font-size:8px;
+  border:2px solid #222;
+  color:#222;
+  bottom: -45%;
+  text-transform:uppercase;
+  font-weight:600;
+  background:#fff;
         }
         
         #research {
