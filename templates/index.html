@@ -13,25 +13,26 @@
         <form action="{{ url_for('predict')}}" method="post">
             <h2>Predictive analysis</h2>
             <h3>In which year you had buy this car ?</h3>
-            <input id="first" name="Year" type="number ">
-            <h3>What is the Showroom Price?(In lakhs)</h3><br><input id="second" name="Present_Price" required="required" title="do not forget to fill all the rows before clicking on calculate the price">
+            <input id="first" name="Year" type="number" title="do not forget to fill all the rows before clicking on calculate the price">
+            <h3>What is the Showroom Price?(In lakhs)</h3><br><input id="second" name="Present_Price" title="do not forget to fill all the rows before clicking on calculate the price">
             <h3>How Many Kilometers Drived?</h3><input id="third" name="Kms_Driven" required="required">
-            <h3>How much owners previously had the car(0 or 1 or 3) ?</h3><br><input id="fourth" name="Owner" required="required">
-            <h3>What Is the Fuel type?</h3><br><select name="Fuel_Type_Petrol" id="fuel" required="required" required>
+            <h3>How much owners previously had the car(0 or 1 or 3) ?</h3><br><input id="fourth" name="Owner">
+            <h3>What Is the Fuel type?</h3><br><select name="Fuel_Type_Petrol" id="fuel" title="do not forget to fill all the rows before clicking on calculate the price">
                 <option value="Petrol">Petrol</option>
                 <option value="Diesel">Diesel</option>
                 <option value="Diesel">CNG</option>
             </select>
-            <h3>Are you A Dealer or Individual</h3><br><select name="Seller_Type_Individual" id="resea" required="required">
+            <h3>Are you A Dealer or Individual</h3><br><select name="Seller_Type_Individual" id="resea">
                 <option value="Dealer">Dealer</option>
                 <option value="Individual">Individual</option>
             </select>
-            <h3>Transmission type</h3><br><select name="Transmission_Mannual" id="research"  required="required">
+            <h3>Transmission type</h3><br><select name="Transmission_Mannual" id="research" title="do not forget to fill all the rows before clicking on calculate the price">
                 <option value="Mannual">Manual Car</option>
                 <option value="Automatic">Automatic Car</option>
             </select>
             <br><br>
   <button data-modal-target="#modal">Calculate the price</button>
+            <button data-modal-target="#modal">Show the selling price</button>
   <div class="modal" id="modal">
     <div class="modal-header">
     <button data-close-button class="close-button">&times;</button>
@@ -89,6 +90,7 @@
 
 .modal-body {
   padding: 10px 15px;
+    display:flex;
 }
 
 #overlay {
