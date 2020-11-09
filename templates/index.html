@@ -45,6 +45,7 @@
 /* Popup container - can be anything you want */
 .popup .overlay {
   position:fixed;
+  display:flex;
   top:0px;
   left:0px;
   width:100vw;
@@ -57,6 +58,7 @@
 .popup .content {
   position:absolute;
   top:50%;
+  display:flex;  
   left:50%;
   transform:translate(-50%,-50%) scale(0);
   background:#fff;
@@ -86,7 +88,7 @@
 }
 
 .popup.active .overlay {
-  display:show;
+ display:flex;
     
 }
 
